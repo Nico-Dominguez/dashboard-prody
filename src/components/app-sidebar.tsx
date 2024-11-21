@@ -68,7 +68,7 @@ export function AppSidebar() {
     <Sidebar>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel className="text-xl text-black font-bold mb-4">
+          <SidebarGroupLabel className="text-xl text-black font-bold mb-2">
             Prody
           </SidebarGroupLabel>
           <AppCommand />
