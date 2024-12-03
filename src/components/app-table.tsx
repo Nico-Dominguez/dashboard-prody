@@ -11,77 +11,117 @@ import {
 
 const invoices = [
   {
-    invoice: "INV001",
-    paymentStatus: "Paid",
+    id: "01",
+    deals: "Acme",
     totalAmount: "$250.00",
-    paymentMethod: "Credit Card",
+    contact: "Tyra Dhillon",
+    email: "johndoe@gmail.com",
+    source: "Social Networks",
   },
   {
-    invoice: "INV002",
-    paymentStatus: "Pending",
+    id: "02",
+    deals: "Academic Project",
     totalAmount: "$150.00",
-    paymentMethod: "PayPal",
+    contact: "Brittni Lando",
+    email: "johndoe@gmail.com",
+    source: "Outreach",
   },
   {
-    invoice: "INV003",
-    paymentStatus: "Unpaid",
+    id: "03",
+    deals: "Aimbus",
     totalAmount: "$350.00",
-    paymentMethod: "Bank Transfer",
+    contact: "Kevin Chen",
+    email: "johndoe@gmail.com",
+    source: "Referrals",
   },
   {
-    invoice: "INV004",
-    paymentStatus: "Paid",
+    id: "04",
+    deals: "Big Bang Production",
     totalAmount: "$450.00",
-    paymentMethod: "Credit Card",
+    contact: "Josh Ryan",
+    email: "johndoe@gmail.com",
+    source: "Word-of-mouth",
   },
   {
-    invoice: "INV005",
-    paymentStatus: "Paid",
+    id: "05",
+    deals: "Book Launch",
     totalAmount: "$550.00",
-    paymentMethod: "PayPal",
+    contact: "Chieko Chute",
+    email: "johndoe@gmail.com",
+    source: "Outreach",
   },
   {
-    invoice: "INV006",
-    paymentStatus: "Pending",
+    id: "06",
+    deals: "Christo Inc",
     totalAmount: "$200.00",
-    paymentMethod: "Bank Transfer",
+    contact: "Ryan Reynolds",
+    email: "johndoe@gmail.com",
+    source: "Referrals",
   },
   {
-    invoice: "INV007",
-    paymentStatus: "Unpaid",
+    id: "07",
+    deals: "Crimeworkers",
     totalAmount: "$300.00",
-    paymentMethod: "Credit Card",
+    contact: "Will Smith",
+    email: "johndoe@gmail.com",
+    source: "Social Networks",
   },
 ];
 
 export function AppTable() {
+  const sourceStyles = {
+    "Social Networks": "bg-yellow-100 border-yellow-300 text-yellow-600",
+    Outreach: "bg-blue-100 border-blue-300 text-blue-600",
+    Referrals: "bg-green-100 border-green-300 text-green-600",
+  } as const;
+
+  const getSourceStyles = (source: string) => {
+    return sourceStyles[source] || "bg-gray-100 border-gray-300 text-gray-600";
+  };
+
   return (
     <Table>
-      <TableCaption>A list of your recent invoices.</TableCaption>
-      <TableHeader>
+      <TableHeader className="bg-gray-100 rounded-full border">
         <TableRow>
-          <TableHead className="w-[100px]">Invoice</TableHead>
-          <TableHead>Status</TableHead>
-          <TableHead>Method</TableHead>
-          <TableHead className="text-right">Amount</TableHead>
+          <TableHead className="w-[100px]">ID</TableHead>
+          <TableHead>Deals</TableHead>
+          <TableHead>Contact</TableHead>
+          <TableHead>Email</TableHead>
+          <TableHead className="">Value</TableHead>
+          <TableHead className="text-right">Source</TableHead>
         </TableRow>
       </TableHeader>
-      <TableBody>
+      <TableBody className="">
         {invoices.map((invoice) => (
-          <TableRow key={invoice.invoice}>
-            <TableCell className="font-medium">{invoice.invoice}</TableCell>
-            <TableCell>{invoice.paymentStatus}</TableCell>
-            <TableCell>{invoice.paymentMethod}</TableCell>
-            <TableCell className="text-right">{invoice.totalAmount}</TableCell>
+          <TableRow key={invoice.id}>
+            <TableCell className="font-medium py-4">{invoice.id}</TableCell>
+            <TableCell>{invoice.deals}</TableCell>
+            <TableCell className="">
+              <span className="border rounded-full py-1 px-2 font-bold">
+                {invoice.contact}
+              </span>
+            </TableCell>
+            <TableCell>{invoice.email}</TableCell>
+            <TableCell className="">{invoice.totalAmount}</TableCell>
+            <TableCell className="text-right ">
+              <span
+                className={`border rounded-full py-1 px-2 shadow ${getSourceStyles(
+                  invoice.source
+                )}`}
+              >
+                {invoice.source}
+              </span>
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>
-      <TableFooter>
-        <TableRow>
-          <TableCell colSpan={3}>Total</TableCell>
-          <TableCell className="text-right">$2,500.00</TableCell>
-        </TableRow>
-      </TableFooter>
     </Table>
   );
 }
+
+/* switch (invoice.source) {
+    case "Social Networks"
+        className = "bg-yellow-100 border-yellow-300 text-yellow-600"
+    case "Outreach"
+        className = "bg-blue-100 border-blue-300 text-blue-600"
+}  */
