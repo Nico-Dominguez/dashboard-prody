@@ -1,6 +1,7 @@
 import React from "react";
 import MainTitle from "./main/main-title";
 import MainGraph from "./main/main-graph";
+import { AppTable } from "./app-table";
 
 const AppMain = () => {
   return (
@@ -11,12 +12,12 @@ const AppMain = () => {
         </section>
 
         <div className="grid gap-6 lg:gap-8">
-          <section className="bg-white rounded-lg border-2 shadow p-4 lg:p-6">
+          <section className="md:col-span-2 bg-white rounded-lg shadow-sm p-4 lg:p-6">
             <MainGraph />
           </section>
 
           <section className="md:col-span-2 bg-white rounded-lg shadow-sm p-4 lg:p-6">
-            {/* table - spans full width */}
+            <AppTable />
           </section>
         </div>
       </div>
